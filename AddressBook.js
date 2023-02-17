@@ -167,8 +167,16 @@ function getCountOfContacts(count) {
     return count;
 }
 
-let firstContact = new Contact("Sneha", "Ghongade", "#3ac910", "Mumbai", "Maharashtra", "560 043", "91 9456986522", "sg@gmail.com");
-let secondContact = new Contact("Kunal", "Shetty", "#6ac810", "Pune", "Maharashtra", "123 569", "91 9898989897", "ks@gmail.com");
+function searchContactByCity(city) {
+    return addressBookArray.filter((contact) => contact.city == city);
+  }
+  
+function searchContactByState(state) {
+    return addressBookArray.filter((contact) => contact.state == state);
+  }
+
+let firstContact = new Contact("Sneha", "Ghongade", "#3ac910", "Mumbai", "Maharashtra", "789 156", "91 9878956899", "sg@gmail.com");
+let secondContact = new Contact("Kunal", "Shetty", "#6ac810", "Pune", "Maharashtra", "234 567", "91 8956235896", "ks@gmail.com");
 
 try {
     addressBookArray.push(firstContact);
@@ -180,7 +188,7 @@ try {
 console.log(addressBookArray);
 
 console.log("\nAfter Editing Contact");
-editContact("Sneha", "Ghongade", "Mumbai", "Maharashtra");
+editContact("Sneha", "Ghongade", "city", "Maharashtra");
 console.log(addressBookArray);
 
 console.log("\nCount of Contacts : " + addressBookArray.reduce(getCountOfContacts, 0));
@@ -198,4 +206,9 @@ try {
     console.error(e);
 }
 console.log(addressBookArray);
-Footer
+
+console.log("\nSearch Contact By City");
+console.log(searchContactByCity("Mumbai"));
+
+console.log("\nSearch Contact By State");
+console.log(searchContactByState("Maharashtra"));
