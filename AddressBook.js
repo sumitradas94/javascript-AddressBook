@@ -112,6 +112,8 @@ class Contact {
 }
 
 let addressBookArray = new Array();
+let contactsCityMap = new Map();
+let contactsStateMap = new Map();
 
 function contactExists(firstName, lastName) {
     return addressBookArray.some(contact => contact.firstName == firstName && contact.lastName == lastName);
@@ -167,20 +169,32 @@ function getCountOfContacts(count) {
     return count;
 }
 
-function searchContactByCity(city) {
-    return addressBookArray.filter((contact) => contact.city == city);
-  }
+function searchContactByCity(firstName, city) {
+    return addressBookArray.filter((contact) => contact.city == city && contact.firstName == firstName);
+}
   
-function searchContactByState(state) {
-    return addressBookArray.filter((contact) => contact.state == state);
-  }
+function searchContactByState(firstName, state) {
+    return addressBookArray.filter((contact) => contact.state == state && contact.firstName == firstName);
+}
 
-let firstContact = new Contact("Sneha", "Ghongade", "#3ac910", "Mumbai", "Maharashtra", "789 156", "91 9878956899", "sg@gmail.com");
-let secondContact = new Contact("Kunal", "Shetty", "#6ac810", "Pune", "Maharashtra", "234 567", "91 8956235896", "ks@gmail.com");
+function viewContactsByCity(city){
+    return addressBookArray.filter((contact) => contact.city == city);
+}
+
+function viewContactsByState(state){
+    return addressBookArray.filter((contact) => contact.state == state);
+}
+
+let firstContact = new Contact("Sneha", "Ghongade", "#3ac910", "Mumbai", "Maharashtra", "560 043", "91 9481448524", "sg@gmail.com");
+let secondContact = new Contact("Kriya", "Sawant", "#6ac810", "Pune", "Maharashtra", "234 567", "91 9456896523", "ks@gmail.com");
+let thirdContact = new Contact("Kriya", "Sawant", "#8105bc", "Ratnagiri", "America", "550 864", "91 9485768574", "ks@gmail.com");
+let fourthContact = new Contact("Kunal", "Shetty", "#8105bc", "Sindhudurg", "Maharashtra", "550 864", "91 9465837465", "ks@gmail.com");
 
 try {
     addressBookArray.push(firstContact);
     addressBookArray.push(secondContact);
+    addressBookArray.push(thirdContact);
+    addressBookArray.push(fourthContact);
 } catch (e) {
     console.error(e);
 }
@@ -188,7 +202,7 @@ try {
 console.log(addressBookArray);
 
 console.log("\nAfter Editing Contact");
-editContact("Sneha", "Ghongade", "city", "Maharashtra");
+editContact("Sneha", "Ghongade", "city", "Mumbai");
 console.log(addressBookArray);
 
 console.log("\nCount of Contacts : " + addressBookArray.reduce(getCountOfContacts, 0));
@@ -207,8 +221,16 @@ try {
 }
 console.log(addressBookArray);
 
-console.log("\nSearch Contact By City");
-console.log(searchContactByCity("Mumbai"));
+console.log("\nSearch Kriya In City - Pune");
+console.log(searchContactByCity("Kriya", "Pune"));
 
-console.log("\nSearch Contact By State");
-console.log(searchContactByState("Maharashtra"));
+console.log("\nSearch Kriya In State - Maharashtra");
+console.log(searchContactByState("Kriya", "Maharashtra"));
+
+
+console.log("\nView Contacts By City : Pune \n" );
+console.log(viewContactsByCity("Pune"));
+
+console.log("\nView Contacts By State : Maharashtra \n" );
+console.log(viewContactsByState("Maharashtra"));
+Footer
