@@ -198,6 +198,21 @@ function sortAddressBookByName(){
     console.log(addressBookArray);
 }
 
+function sortAddressBookByCity(){
+    addressBookArray.sort((firstPerson, secondPerson) => (firstPerson.city).localeCompare(secondPerson.city));
+    console.log(addressBookArray);
+}
+
+function sortAddressBookByState(){
+    addressBookArray.sort((firstPerson, secondPerson) => (firstPerson.state).localeCompare(secondPerson.state));
+    console.log(addressBookArray);
+}
+
+function sortAddressBookByZip(){
+    addressBookArray.sort((firstPerson, secondPerson) => (firstPerson.zip).localeCompare(secondPerson.zip));
+    console.log(addressBookArray);
+}
+
 let firstContact = new Contact("Sneha", "Ghongade", "#3ac910", "Mumbai", "Maharashtra", "560 043", "91 9481448524", "sg@gmail.com");
 let secondContact = new Contact("Kriya", "Sawant", "#6ac810", "Pune", "Maharashtra", "234 567", "91 9456896523", "ks@gmail.com");
 let thirdContact = new Contact("Kriya", "Sawant", "#8105bc", "Ratnagiri", "America", "550 864", "91 9485768574", "ks@gmail.com");
@@ -224,6 +239,7 @@ console.log("\nAfter Deleting Contact");
 deleteContact("Sneha", "Ghongade");
 console.log(addressBookArray);
 
+
 console.log("\nCount of Contacts : " + addressBookArray.reduce(getCountOfContacts, 0));
 
 console.log("\nAdding Duplicate Contact");
@@ -240,7 +256,6 @@ console.log(searchContactByCity("Kriya", "Pune"));
 console.log("\nSearch Kriya In State - Maharashtra");
 console.log(searchContactByState("Kriya", "Maharashtra"));
 
-
 console.log("\nView Contacts By City : Pune \n" );
 console.log(viewContactsByCity("Pune"));
 
@@ -252,3 +267,12 @@ console.log("\nNumber of Contacts residing in State : Maharashtra = " + getCount
 
 console.log("\nContacts In Alphabetical Order");
 sortAddressBookByName();
+
+console.log("\nContacts Sorted Using City");
+sortAddressBookByCity();
+
+console.log("\nContacts Sorted Using State");
+sortAddressBookByState();
+
+console.log("\nContacts Sorted Using Zip");
+sortAddressBookByZip();
