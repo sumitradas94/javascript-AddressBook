@@ -147,20 +147,32 @@ function editContact(firstName, lastName, property, newValue) {
     }
 }
 
+function deleteContact(firstName, lastName){
+    if(contactExists(firstName, lastName)){
+        addressBookArray = addressBookArray.filter((contact) => contact.firstName != firstName && contact.lastName != lastName);
+    }else{
+        console.log("Contact Does Not Exist");
+    }
+}
+
 try {
-    addressBookArray.push(new Contact("Sneha", "Ghongade", "#3ac910", "Mumbai", "Maharashtra", "400 025", "91 9405632266", "sg@gmail.com"));
+    addressBookArray.push(new Contact("Kunal", "Shetty", "#3ac910", "Pune", "Maharashtra", "560 043", "91 9481448524", "ks@gmail.com"));
 } catch (e) {
     console.error(e);
 }
 
 try {
-    addressBookArray.push(new Contact("Kunal", "Shetty", "#6ac810", "Pune", "Maharashtra", "234 567", "91 9456986235", "ks@gmail.com"));
+    addressBookArray.push(new Contact("Sneha", "Ghongade", "#6ac810", "Mumbai", "Maharashtra", "234 567", "91 9898989897", "Sg@gmail.com"));
 } catch (e) {
     console.error(e);
 }
 
 console.log(addressBookArray);
 
-console.log("\nAfter Editing Contact")
-editContact("Suraj", "Shetty", "Mumbai", "Maharashtra");
+console.log("\nAfter Editing Contact");
+editContact("Kunal", "Shetty", "Pune", "Maharashtra");
+console.log(addressBookArray);
+
+console.log("\nAfter Deleting Contact");
+deleteContact("Kunal", "Shetty");
 console.log(addressBookArray);
